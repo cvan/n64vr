@@ -1,0 +1,44 @@
+{
+  "name": "n64vr",
+  "version": "1.0.0",
+  "description": "Nintendo 64® in Virtual Reality",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cvan/n64vr.git"
+  },
+  "keywords": [
+    "vr",
+    "virtual reality",
+    "n64",
+    "nintendo",
+    "nintendo 64",
+    "video game",
+    "video games",
+    "game",
+    "games",
+    "gaming",
+    "oculus"
+  ],
+  "author": "Chris Van",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cvan/n64vr/issues"
+  },
+  "homepage": "https://github.com/cvan/n64vr",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run dev",
+    "prod": "export NODE_ENVIRONMENT='production' && npm run build",
+    "dev": "export NODE_ENVIRONMENT='development' && npm run build && npm run watch",
+    "build": "if [[ $NODE_ENVIRONMENT == 'production' ]]; then echo export SOURCE_MAPS=0; else export SOURCE_MAPS=1; fi ; echo $SOURCE_MAPS && mkdir -p dist && browserify src/index.js --debug=$SOURCE_MAPS -t babelify -o dist/n64vr.js",
+    "watch": "onchange src/{*,**/*}.js -- npm run build",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.0",
+    "browserify": "^10.1.3",
+    "onchange": "^1.1.0",
+    "release-it": "0.0.15"
+  }
+}
